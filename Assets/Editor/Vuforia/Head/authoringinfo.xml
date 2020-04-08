@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARInfo>
+<TargetSet version="14.0" toolVersion="8.6.7">
+<ModelTarget name="Head" targetId="d3b46c77db9744969e891f2638deda72" version="11.1" toolVersion="8.6.7" bbox="-4.504600 3.003000 34.945000 4.488100 7.193000 49.079899" previewImage="d3b46c77db9744969e891f2638deda72_preview.jpg"/>
+
+</TargetSet>
+
+<Assembly name="Heads_assembly" assemblyId="413f7e55bd8b4e8f8e27f839b27da16e">
+<Part name="Head" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0000" translation="0.144752 37.8107 47.4338" rotation="AD: -0.018925731920078927 1.5970318751623402 -1.2823258157227744 180.85" image="Head_viewpoint_0000.png" trained="no">
+
+</EntryPoint>
+<EntryPoint name="viewpoint_0001" translation="-3.36484 48.4302 35.4993" rotation="AD: 0.0219460976977228 1.4182904757930763 -1.409831893052952 178.75" image="Head_viewpoint_0001.png" trained="no">
+
+</EntryPoint>
+<EntryPoint name="viewpoint_0002" translation="5.26294 32.5472 42.5166" rotation="AD: -0.11263566347785174 1.5333526274448182 -1.310700697380145 185.457" image="Head_viewpoint_0002.png" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARInfo>

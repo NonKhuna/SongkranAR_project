@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARInfo>
+<TargetSet version="14.0" toolVersion="8.6.7">
+<ModelTarget name="Rigged Hand6" targetId="a4f7879bb51c472ca36e7525931f1fba" version="11.1" toolVersion="8.6.7" bbox="0.722771 1.397796 0.083275 0.876950 1.449586 0.163809" previewImage="a4f7879bb51c472ca36e7525931f1fba_preview.jpg"/>
+
+</TargetSet>
+
+<Assembly name="Rigged Hand6s_assembly" assemblyId="0ef96726b29d4b2ab0f4ffda5da7e82b">
+<Part name="Rigged Hand6" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0000" translation="0.143716 1.38398 1.03982" rotation="AD: 0.9444802083964844 0.5468174989018529 -0.9221071737274331 222.811" image="Rigged Hand6_viewpoint_0000.png" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARInfo>

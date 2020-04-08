@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+<Tracking>
+<ModelTarget name="Rigged Hand6" motionHint="static"/>
+
+</Tracking>
+
+<Assembly name="Rigged Hand6s_assembly" assemblyId="0ef96726b29d4b2ab0f4ffda5da7e82b">
+<Part name="Rigged Hand6" translation="0 0 0" rotation="AD: 0 0 1 0"/>
+<EntryPoint name="viewpoint_0000" translation="0.143716 1.38398 1.03982" rotation="AD: 0.9444802083964844 0.5468174989018529 -0.9221071737274331 222.811" trained="no">
+
+</EntryPoint>
+
+</Assembly>
+
+</QCARConfig>
