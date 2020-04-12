@@ -12,14 +12,21 @@ public class LookCamera : MonoBehaviour
     public float x_min;
     public GameObject cube;
     public float Inc=0.01f;
+
+    public int modMax=200; 
+    int cnt=0;
+    private Quaternion target;
     void Start()
     {
-        Cam = GameObject.FindWithTag("MainCamera");       
+        Cam = GameObject.FindWithTag("MainCamera");
+        target.x=26.2f;
+        target.y=2.3f;     
     }
 
     // Update is called once per frame
     void Update()
     {
+        // cnt++;
         // print(cube.transform.rotation.y);
         if(cube.transform.localRotation.y > y_max){
             Quaternion now=cube.transform.localRotation;
@@ -32,9 +39,18 @@ public class LookCamera : MonoBehaviour
             cube.transform.localRotation=Quaternion.Lerp(cube.transform.localRotation,now,Time.deltaTime*10);
             // cube.transform.localRotation=now;
         }
-        else {
-            transform.LookAt(Cam.transform,Vector3.up);
-        }
+        // else {
+            // if(cnt>modMax){
+            //     Quaternion now=cube.transform.localRotation;
+            //     now.x=26.2f;
+            //     now.y=2.3f;
+            //     cube.transform.localRotation=Quaternion.Lerp(cube.transform.localRotation,now,Time.deltaTime);
+            //     if(cnt>1000) cnt=0;
+            // }
+            else {
+                transform.LookAt(Cam.transform,Vector3.up);
+            }
+        // }
 
     }
 }
