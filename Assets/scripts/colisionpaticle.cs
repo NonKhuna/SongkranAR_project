@@ -25,10 +25,10 @@ public class colisionpaticle : MonoBehaviour
         collisionEvent = new List<ParticleCollisionEvent>();
     }
     
-    //when collision touch someting 
     void OnParticleCollision(GameObject other)
     {
         ParticlePhysicsExtensions.GetCollisionEvents(particleLauncher[0],other,collisionEvent);
+        
         for(int i=0;i<collisionEvent.Count;i++)
         {
             emitAtlocation(collisionEvent[i]);
