@@ -9,8 +9,10 @@ public class gallarySystem : MonoBehaviour
     public RectTransform rectT;
     public int statework=1;
     public RectTransform center;
+    public randomFace randomFace;
     void Start()
     {
+        randomFace=GetComponent<randomFace>();
     }
 
     // Update is called once per frame
@@ -55,14 +57,11 @@ public class gallarySystem : MonoBehaviour
             // Color[] c=mtexture.GetPixel(realR.x,realR.y,);
             // texture.GetPixel()
             face.material.mainTexture = texture;
-				
+			randomFace.Isactivate=false;	
 			// Destroy( quad, 5f );
 
-			// If a procedural texture is not destroyed manually, 
-			// it will only be freed after a scene change
-			Destroy( texture, 5f );
 		}
-	}, "Select a PNG image", "image/png" );
+	}, "Select a PNG image", "image/*" );
 
 	Debug.Log( "Permission result: " + permission );
 }
