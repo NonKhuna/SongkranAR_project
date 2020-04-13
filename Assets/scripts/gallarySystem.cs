@@ -7,6 +7,8 @@ public class gallarySystem : MonoBehaviour
     // Start is called before the first frame update
     public MeshRenderer face;
     public RectTransform rectT;
+    public int statework=1;
+    public RectTransform center;
     void Start()
     {
     }
@@ -22,19 +24,6 @@ public class gallarySystem : MonoBehaviour
     {
         // StartCoroutine(Loadimage());
         PickImage(512);
-        // NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
-        // {
-        //     if(path != null){
-        //         Texture2D texture = NativeGallery.LoadImageAtPath(path);
-        //         if(texture == null) {
-        //             Debug.Log("Could't load texture from" + path);
-        //             return;
-        //         }
-        //         texture.Resize(texture.width,texture.width);
-                // face.material.mainTexture = texture;
-
-        //     }
-        // },"select a image","image/*");
     }
 
     private void PickImage( int maxSize )
@@ -59,8 +48,12 @@ public class gallarySystem : MonoBehaviour
 			// quad.transform.localScale = new Vector3( 1f, texture.height / (float) texture.width, 1f );
 			
 			// Material material = quad.GetComponent<Renderer>().material;
-			if( !face.material.shader.isSupported ) // happens when Standard shader is not included in the build
+			if( !face.material.shader.isSupported) // happens when Standard shader is not included in the build
 				face.material.shader = Shader.Find( "Legacy Shaders/Diffuse" );
+            // Texture2D mtexture;
+            // Rect realR=RectTransformToScreenSpace(center);
+            // Color[] c=mtexture.GetPixel(realR.x,realR.y,);
+            // texture.GetPixel()
             face.material.mainTexture = texture;
 				
 			// Destroy( quad, 5f );
@@ -106,6 +99,7 @@ public class gallarySystem : MonoBehaviour
         //
         // Save the screenshot to Gallery/Photos
         Debug.Log( "Permission result: " + NativeGallery.SaveImageToGallery( ss, "GalleryTest", "Image.png" ) );
+
         
         // To avoid memory leaks
         Destroy( ss );

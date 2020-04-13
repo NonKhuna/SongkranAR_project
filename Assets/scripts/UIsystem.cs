@@ -8,10 +8,14 @@ public class UIsystem : MonoBehaviour
     public GameObject guide1;
     public GameObject guide2;
     public GameObject guidebutton;
+    public GameObject barphoto;
+    public GameObject selectwork;
+    public gallarySystem gallarySystem;
     void Start()
     {
         guide1.SetActive(true);
         guidebutton.SetActive(false);
+        barphoto.SetActive(true);
     }
 
     // Update is called once per frame
@@ -24,6 +28,7 @@ public class UIsystem : MonoBehaviour
         guide1.SetActive(false);
         guide2.SetActive(false);
         guidebutton.SetActive(true);
+        gallarySystem.statework=0;
     }
 
     public void next(){
@@ -37,4 +42,17 @@ public class UIsystem : MonoBehaviour
         guide2.SetActive(false);
         guidebutton.SetActive(false);
     }
+
+    public void plusbutton(){
+        Close();
+        guidebutton.SetActive(false);
+        barphoto.SetActive(false);
+        selectwork.SetActive(true);
+    }
+
+    public void takephoto(){
+        selectwork.SetActive(false);
+        gallarySystem.statework=1;
+    }
+
 }
