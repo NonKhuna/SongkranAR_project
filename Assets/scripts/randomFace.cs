@@ -13,7 +13,7 @@ public class randomFace : MonoBehaviour
     public bool Isactivate=true;
     void Start()
     {
-        
+        face.material.mainTexture=faceEmoji[0];
     }
 
     // Update is called once per frame
