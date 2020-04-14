@@ -11,6 +11,10 @@ public class UIsystem : MonoBehaviour
     public GameObject barphoto;
     public GameObject selectwork;
     public gallarySystem gallarySystem;
+    public GameObject LightOn;
+    public GameObject Lightoff;
+
+    public setLight scSetLight;
     void Start()
     {
         guide1.SetActive(true);
@@ -28,7 +32,6 @@ public class UIsystem : MonoBehaviour
         guide1.SetActive(false);
         guide2.SetActive(false);
         guidebutton.SetActive(true);
-        gallarySystem.statework=0;
     }
 
     public void next(){
@@ -52,7 +55,18 @@ public class UIsystem : MonoBehaviour
 
     public void takephoto(){
         selectwork.SetActive(false);
-        gallarySystem.statework=1;
+    }
+
+    public void TurnOnLight(){
+        LightOn.SetActive(true);
+        Lightoff.SetActive(false);
+        scSetLight.FlashButton();
+    }
+
+    public void TurnOffLight(){
+        LightOn.SetActive(false);
+        Lightoff.SetActive(true);
+        scSetLight.FlashButton();
     }
 
 }

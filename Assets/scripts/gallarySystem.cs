@@ -7,8 +7,7 @@ public class gallarySystem : MonoBehaviour
     // Start is called before the first frame update
     public MeshRenderer face;
     public RectTransform rectT;
-    public int statework=1;
-    public RectTransform center;
+    // public RectTransform center;
     public randomFace randomFace;
     void Start()
     {
@@ -19,7 +18,7 @@ public class gallarySystem : MonoBehaviour
     void Update()
     {
         // print(Screen.height);
-        print(RectTransformToScreenSpace(rectT));
+        // print(RectTransformToScreenSpace(rectT));
     }
 
     public void picImage()
@@ -43,13 +42,6 @@ public class gallarySystem : MonoBehaviour
 				return;
 			}
 
-			// Assign texture to a temporary quad and destroy it after 5 seconds
-			// GameObject quad = GameObject.CreatePrimitive( PrimitiveType.Quad );
-			// quad.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.5f;
-			// quad.transform.forward = Camera.main.transform.forward;
-			// quad.transform.localScale = new Vector3( 1f, texture.height / (float) texture.width, 1f );
-			
-			// Material material = quad.GetComponent<Renderer>().material;
 			if( !face.material.shader.isSupported) // happens when Standard shader is not included in the build
 				face.material.shader = Shader.Find( "Legacy Shaders/Diffuse" );
             // Texture2D mtexture;
@@ -96,6 +88,7 @@ public class gallarySystem : MonoBehaviour
         // ss.ReadPixels( new Rect(0,0,Screen.width,Screen.height), 0, 0 );
         ss.Apply();
         //
+        // GUI.DrawTexture(new Rect(0,0,Screen.width,(int)realR.y),ss,ScaleMode.ScaleToFit);
         // Save the screenshot to Gallery/Photos
         Debug.Log( "Permission result: " + NativeGallery.SaveImageToGallery( ss, "GalleryTest", "Image.png" ) );
 
