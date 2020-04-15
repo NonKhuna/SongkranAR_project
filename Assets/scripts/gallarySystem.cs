@@ -9,6 +9,8 @@ public class gallarySystem : MonoBehaviour
     public RectTransform rectT;
     // public RectTransform center;
     public randomFace randomFace;
+    public GameObject guidebut;
+    public GameObject Exitbut;
     void Start()
     {
         randomFace=GetComponent<randomFace>();
@@ -76,9 +78,22 @@ public class gallarySystem : MonoBehaviour
     //     },"select a image","image/*");
     // }
     public void takePhoto(){
+        StartCoroutine(deleteUI());
         StartCoroutine( TakeScreenshotAndSave());
+        StartCoroutine(setUI());
     }
 
+    private IEnumerator deleteUI(){
+        yield return new WaitForEndOfFrame();
+        guidebut.SetActive(false);
+        Exitbut.SetActive(false);
+    }
+
+    private IEnumerator setUI(){
+        yield return new WaitForEndOfFrame();
+        guidebut.SetActive(true);
+        Exitbut.SetActive(true);
+    }
     private IEnumerator TakeScreenshotAndSave()
     {
         yield return new WaitForEndOfFrame();
@@ -91,8 +106,6 @@ public class gallarySystem : MonoBehaviour
         // GUI.DrawTexture(new Rect(0,0,Screen.width,(int)realR.y),ss,ScaleMode.ScaleToFit);
         // Save the screenshot to Gallery/Photos
         Debug.Log( "Permission result: " + NativeGallery.SaveImageToGallery( ss, "GalleryTest", "Image.png" ) );
-
-        
         // To avoid memory leaks
         Destroy( ss );
     }
