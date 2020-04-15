@@ -20,9 +20,11 @@ public class CopyTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
     #region PROTECTED_MEMBER_VARIABLES
     bool before=false,detected=false;
     public AudioSource clip;
+    public Animator anim;
     protected TrackableBehaviour mTrackableBehaviour;
     protected TrackableBehaviour.Status m_PreviousStatus;
     protected TrackableBehaviour.Status m_NewStatus;
+
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -91,6 +93,7 @@ public class CopyTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
         {
             before = detected ;
             clip.Play();
+            anim.SetBool("play",true);
         }
         if (mTrackableBehaviour)
         {
@@ -120,6 +123,7 @@ public class CopyTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
         {
             before = detected ;
             clip.Pause();
+            anim.SetBool("play",false);
         }
         if (mTrackableBehaviour)
         {

@@ -7,34 +7,58 @@ public class gallarySystem : MonoBehaviour
     // Start is called before the first frame update
     public MeshRenderer face;
     public RectTransform rectT;
+    // public RectTransform center;
+    public randomFace randomFace;
+    public GameObject guidebut;
+    public GameObject Exitbut;
     void Start()
     {
+        randomFace=GetComponent<randomFace>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // print(Screen.height);
-        print(RectTransformToScreenSpace(rectT));
+        // print(RectTransformToScreenSpace(rectT));
     }
 
     public void picImage()
     {
         // StartCoroutine(Loadimage());
-        NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
-        {
-            if(path != null){
-                Texture2D texture = NativeGallery.LoadImageAtPath(path);
-                if(texture == null) {
-                    Debug.Log("Could't load texture from" + path);
-                    return;
-                }
-                texture.Resize(texture.width,texture.width);
-                face.material.mainTexture = texture;
-
-            }
-        },"select a image","image/*");
+        PickImage(512);
     }
+
+    private void PickImage( int maxSize )
+{
+	NativeGallery.Permission permission = NativeGallery.GetImageFromGallery( ( path ) =>
+	{
+		Debug.Log( "Image path: " + path );
+		if( path != null )
+		{
+			// Create Texture from selected image
+			Texture2D texture = NativeGallery.LoadImageAtPath( path, maxSize );
+			if( texture == null )
+			{
+				Debug.Log( "Couldn't load texture from " + path );
+				return;
+			}
+
+			if( !face.material.shader.isSupported) // happens when Standard shader is not included in the build
+				face.material.shader = Shader.Find( "Legacy Shaders/Diffuse" );
+            // Texture2D mtexture;
+            // Rect realR=RectTransformToScreenSpace(center);
+            // Color[] c=mtexture.GetPixel(realR.x,realR.y,);
+            // texture.GetPixel()
+            face.material.mainTexture = texture;
+			randomFace.Isactivate=false;	
+			// Destroy( quad, 5f );
+
+		}
+	}, "Select a PNG image", "image/*" );
+
+	Debug.Log( "Permission result: " + permission );
+}
 
     // private IEnumerator Loadimage()
     // {
@@ -54,9 +78,22 @@ public class gallarySystem : MonoBehaviour
     //     },"select a image","image/*");
     // }
     public void takePhoto(){
+        StartCoroutine(deleteUI());
         StartCoroutine( TakeScreenshotAndSave());
+        StartCoroutine(setUI());
     }
 
+    private IEnumerator deleteUI(){
+        yield return new WaitForEndOfFrame();
+        guidebut.SetActive(false);
+        Exitbut.SetActive(false);
+    }
+
+    private IEnumerator setUI(){
+        yield return new WaitForEndOfFrame();
+        guidebut.SetActive(true);
+        Exitbut.SetActive(true);
+    }
     private IEnumerator TakeScreenshotAndSave()
     {
         yield return new WaitForEndOfFrame();
@@ -66,9 +103,9 @@ public class gallarySystem : MonoBehaviour
         // ss.ReadPixels( new Rect(0,0,Screen.width,Screen.height), 0, 0 );
         ss.Apply();
         //
+        // GUI.DrawTexture(new Rect(0,0,Screen.width,(int)realR.y),ss,ScaleMode.ScaleToFit);
         // Save the screenshot to Gallery/Photos
         Debug.Log( "Permission result: " + NativeGallery.SaveImageToGallery( ss, "GalleryTest", "Image.png" ) );
-        
         // To avoid memory leaks
         Destroy( ss );
     }

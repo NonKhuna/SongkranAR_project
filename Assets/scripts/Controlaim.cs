@@ -6,11 +6,12 @@ public class Controlaim : MonoBehaviour
 {
     // Start is called before the first frame update
     public colisionpaticle scriptColi;
+    public Animator imagepop;
     public AudioSource cilp;
     bool before=false,nowPlay=false;
+    bool popupImage=false;
     void Start()
     {
-        
     }
 
     public Animator aim;
@@ -24,9 +25,15 @@ public class Controlaim : MonoBehaviour
         if(aim.GetCurrentAnimatorStateInfo(0).IsName("wait"))
         {
             nowPlay=true;
+            if(!popupImage)
+            {
+                popupImage=true;
+                imagepop.SetTrigger("popup");
+            }
             if(nowPlay!=before){
                 before=nowPlay;
                 cilp.Play();
+                
             }
             scriptColi.Play=true;
         }
